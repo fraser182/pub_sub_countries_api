@@ -8,7 +8,7 @@ CountryDetailView.prototype.bindEvents = function(){
   PubSub.subscribe('Countries:country-found', (event) => {
     const country = event.detail;
     this.render(country);
-    // console.log('Country Detail View: SUBSCRIBE - one country info', event.detail);
+    // console.log('Country Detail View: SUBSCRIBE - one country, all details', event.detail);
   });
 }
 
@@ -28,13 +28,12 @@ CountryDetailView.prototype.render = function(country){
 
   //Country Flag
   // console.log('Flag Img:', country.flag);
-  const img = document.createElement('img');
-  img.classList.add('country-flag-image');
-  img.src = country.flag;
+  const image = document.createElement('img');
+  image.classList.add('country-flag-image');
+  image.src = country.flag;
 
   // Country languages
-  // console.log('Country Languages:', country.languages.name);
-  // console.log('Country Languages:', country.languages[0].name);
+  // console.log('Country Languages( [0].name):', country.languages[0].name);
   // console.log('Country Languages:', country.languages);
 
   const countryLanguages = document.createElement('ul');
@@ -47,7 +46,7 @@ CountryDetailView.prototype.render = function(country){
 
   this.container.appendChild(header);
   this.container.appendChild(subheader);
-  this.container.appendChild(img);
+  this.container.appendChild(image);
   this.container.appendChild(countryLanguages);
 }
 

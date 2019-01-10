@@ -7,13 +7,13 @@ const SelectView = function(element){
  // waiting for countries data to be loaded
 SelectView.prototype.bindEvents = function(){
   PubSub.subscribe('Countries:countries-loaded', (event) => {
-    // console.log('SelectView:SUBSCRIBE all countries loaded', event.detail);
+    // console.log('SelectView:SUBSCRIBE - all countries /all details', event.detail);
     const allCountries = event.detail;
     this.populate(allCountries);
   });
   this.element.addEventListener('change', (event) => {
     const selectedIndex = event.target.value;
-    // console.log('SelectView: PUBLISH event listener for country index', selectedIndex);
+    // console.log('SelectView:PUBLISH eventlistener (change drop down) - country index', selectedIndex);
     PubSub.publish('SelectView:country-index-selected', selectedIndex)
   });
 }

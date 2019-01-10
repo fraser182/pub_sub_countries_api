@@ -8,9 +8,9 @@ const Countries = function(){
 Countries.prototype.bindEvents = function(){
   PubSub.subscribe('SelectView:country-index-selected', (event) => {
     const selectedIndex = event.detail;
-    // console.log('Countries: SUBSCRIBE - Country Index(only) selected', event.detail);
+    // console.log('Countries: SUBSCRIBE - eventlistener (change drop down) - country index', event.detail);
     const country = this.findCountry(selectedIndex);
-    // console.log('Countries: PUBLISH - Full Country Details', country);
+    // console.log('Countries: PUBLISH - one country, all details', country);
     PubSub.publish('Countries:country-found', country);
   });
 }
@@ -28,7 +28,7 @@ Countries.prototype.getData = function(){
     }
     const jsonString = xhr.responseText;
     this.countries = JSON.parse(jsonString)
-    // console.log('Countries: INITAL PUBLISH - ALL countries and details ', this.countries);
+    // console.log('Countries: INITIAL PUBLISH - - all countries /all details', this.countries);
     PubSub.publish('Countries:countries-loaded', this.countries)
   });
   xhr.open('GET', 'https://restcountries.eu/rest/v2/');
