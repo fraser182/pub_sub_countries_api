@@ -32,6 +32,7 @@ CountryDetailView.prototype.render = function(country){ // takes in the country
   const image = document.createElement('img');
   image.classList.add('country-flag-image');
   image.src = country.flag;
+  image.alt = `${country.flag}'s flag`;
 
   // Country languages
   // console.log('Country Languages( [0].name):', country.languages[0].name);
