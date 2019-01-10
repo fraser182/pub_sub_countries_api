@@ -7,13 +7,14 @@ const CountryDetailView =  function(container){
 CountryDetailView.prototype.bindEvents = function(){
   PubSub.subscribe('Countries:country-found', (event) => {
     const country = event.detail;
-    this.render(country);
     // console.log('Country Detail View: SUBSCRIBE - one country, all details', event.detail);
+    this.render(country);
+
   });
 }
 
 // name, region, flag, languages
-CountryDetailView.prototype.render = function(country){
+CountryDetailView.prototype.render = function(country){ // takes in the country
   this.container.innerHTML = '';
 
   // Country Name
@@ -35,8 +36,11 @@ CountryDetailView.prototype.render = function(country){
   // Country languages
   // console.log('Country Languages( [0].name):', country.languages[0].name);
   // console.log('Country Languages:', country.languages);
+  const headerLanguages = document.createElement('p');
+  headerLanguages.textContent = "Language(s):"
 
   const countryLanguages = document.createElement('ul');
+
   country.languages.forEach((language) => {
     const listItem = document.createElement('li')
     listItem.textContent = language.name; // put in the text into the list item
@@ -47,7 +51,9 @@ CountryDetailView.prototype.render = function(country){
   this.container.appendChild(header);
   this.container.appendChild(subheader);
   this.container.appendChild(image);
+  this.container.appendChild(headerLanguages);
   this.container.appendChild(countryLanguages);
+
 }
 
 module.exports = CountryDetailView;
