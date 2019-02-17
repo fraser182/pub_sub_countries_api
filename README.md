@@ -10,10 +10,6 @@
 
 Your task is to create an app that allows users to select a country from a drop-down to see information about it.
 
-![Screenshot of resulting application](images/application_screenshot.png)
-
-*Screenshot of resulting application*
-
 Use the start point provided and use the [Rest Countries API](https://restcountries.eu/) as your data source.
 
 ### MVP
